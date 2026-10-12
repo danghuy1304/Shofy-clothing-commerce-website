@@ -40,5 +40,11 @@ backend/venv/
 backend/env/
 backend/.env
 
+# Frontend env (actual secrets — commit only .env.example)
+frontend/.env
+
+# Root Docker env (actual secrets — commit only .env.example)
+.env
+
 # Local design resources
 tài liệu thiết kế/
