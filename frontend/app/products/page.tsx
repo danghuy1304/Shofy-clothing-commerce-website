@@ -120,118 +120,112 @@ function ProductsListContent() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Header */}
-      <div className="bg-slate-900 text-white rounded-3xl p-8 lg:p-12 relative overflow-hidden shadow-lg green-gradient-bg">
+    <div className="mx-auto max-w-7xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
+      {/* Header banner */}
+      <div className="hero-fashion-bg relative overflow-hidden rounded-3xl p-8 text-white shadow-lg lg:p-12">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_-20%,_rgba(200,80,120,0.3),_transparent)]" />
         <div className="relative z-10 max-w-2xl space-y-3">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-200 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+          <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-pink-100 backdrop-blur-sm">
             Shofy Catalog 2026
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
+          <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
             Bộ Sưu Tập Thời Trang
           </h1>
-          <p className="text-emerald-50 text-sm sm:text-base font-medium">
+          <p className="text-sm font-medium text-pink-100 sm:text-base">
             Phân loại chuẩn 7 Bucket chính & Thư mục Folder con với 448 thiết kế sản phẩm đa dạng.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         {/* Sidebar Filters */}
         <aside className="lg:col-span-1 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-200/90 p-6 space-y-6 shadow-sm sticky top-28">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <div className="flex items-center gap-2 font-bold text-slate-900 text-base">
-                <SlidersHorizontal className="w-5 h-5 text-emerald-600" />
+          <div className="sticky top-28 space-y-6 rounded-2xl border border-[#f0d4dc] bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between border-b border-[#f7eef1] pb-4">
+              <div className="flex items-center gap-2 text-base font-bold text-[#1c1a1e]">
+                <SlidersHorizontal className="h-5 w-5 text-[#c2536b]" />
                 <span>Bộ Lọc Sản Phẩm</span>
               </div>
-
               {(selectedCategory || searchVal || minPrice || maxPrice) && (
                 <button
                   onClick={handleResetFilters}
-                  className="text-xs text-rose-600 hover:underline font-semibold flex items-center gap-1"
+                  className="flex items-center gap-1 text-xs font-semibold text-rose-600 hover:underline"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" /> Xóa bộ lọc
+                  <RotateCcw className="h-3.5 w-3.5" /> Xóa bộ lọc
                 </button>
               )}
             </div>
 
             {/* Search Input */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Tìm kiếm</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-[#7a6972]">Tìm kiếm</label>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Nhập tên sản phẩm..."
                   value={searchVal}
                   onChange={(e) => setSearchVal(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+                  className="w-full rounded-xl border border-[#f0d4dc] bg-[#fff7f9] py-2 pl-9 pr-3 text-sm focus:border-[#c2536b] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#fce4eb]"
                 />
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#c2aab2]" />
               </div>
             </div>
 
-            {/* 7 Bucket Accordion Filters */}
+            {/* Category Filters */}
             <div className="space-y-3">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">7 Nhóm Bucket & Folders</label>
-              
+              <label className="text-xs font-bold uppercase tracking-wider text-[#7a6972]">7 Nhóm Bucket & Folders</label>
+
               <button
                 onClick={() => setSelectedCategory('')}
-                className={`w-full text-left px-3 py-2 rounded-xl text-sm font-bold transition-all flex items-center justify-between ${
+                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-bold transition-all ${
                   selectedCategory === ''
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-800 hover:bg-emerald-50 hover:text-emerald-700'
+                    ? 'bg-[#c2536b] text-white shadow-sm'
+                    : 'bg-[#fff7f9] text-[#3a2f34] hover:bg-[#fce4eb] hover:text-[#c2536b]'
                 }`}
               >
                 <span>Tất cả sản phẩm (448)</span>
-                {selectedCategory === '' && <Check className="w-4 h-4" />}
+                {selectedCategory === '' && <Check className="h-4 w-4" />}
               </button>
 
-              <div className="space-y-2 max-h-[420px] overflow-y-auto custom-scrollbar pr-1">
+              <div className="custom-scrollbar max-h-[420px] space-y-2 overflow-y-auto pr-1">
                 {parentBuckets.map((bucket) => {
                   const isBucketActive = selectedCategory === bucket.slug;
                   const isOpen = openBuckets[bucket.slug] ?? true;
-
                   return (
-                    <div key={bucket.id} className="border border-slate-200/80 rounded-xl overflow-hidden">
-                      <div className="flex items-center justify-between p-2 bg-slate-50 hover:bg-slate-100 transition-colors">
+                    <div key={bucket.id} className="overflow-hidden rounded-xl border border-[#f0d4dc]">
+                      <div className="flex items-center justify-between bg-[#fff7f9] p-2 transition-colors hover:bg-[#fce4eb]">
                         <button
                           onClick={() => setSelectedCategory(bucket.slug)}
-                          className={`flex-1 text-left px-2 py-1 text-sm font-extrabold flex items-center gap-1.5 transition-colors ${
-                            isBucketActive ? 'text-emerald-600' : 'text-slate-900'
+                          className={`flex flex-1 items-center gap-1.5 px-2 py-1 text-left text-sm font-extrabold transition-colors ${
+                            isBucketActive ? 'text-[#c2536b]' : 'text-[#1c1a1e]'
                           }`}
                         >
-                          <Folder className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                          <Folder className="h-4 w-4 shrink-0 text-[#c2536b]" />
                           <span className="truncate">{bucket.name}</span>
-                          <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-bold ml-1">
+                          <span className="ml-1 rounded bg-[#fce4eb] px-1.5 py-0.5 text-[10px] font-bold text-[#c2536b]">
                             {bucket.children?.length}
                           </span>
                         </button>
-
-                        <button
-                          onClick={() => toggleBucket(bucket.slug)}
-                          className="p-1 text-slate-400 hover:text-slate-700"
-                        >
-                          {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+                        <button onClick={() => toggleBucket(bucket.slug)} className="p-1 text-[#c2aab2] hover:text-[#c2536b]">
+                          {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                         </button>
                       </div>
-
                       {isOpen && (
-                        <div className="p-2 space-y-1 bg-white border-t border-slate-100">
+                        <div className="space-y-1 border-t border-[#f7eef1] bg-white p-2">
                           {bucket.children?.map((sub) => {
                             const isSubActive = selectedCategory === sub.slug;
                             return (
                               <button
                                 key={sub.id}
                                 onClick={() => setSelectedCategory(sub.slug)}
-                                className={`w-full text-left px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center justify-between ${
+                                className={`flex w-full items-center justify-between rounded-lg px-3 py-1.5 text-left text-xs font-semibold transition-all ${
                                   isSubActive
-                                    ? 'bg-emerald-600 text-white font-bold'
-                                    : 'text-slate-600 hover:bg-emerald-50 hover:text-emerald-700'
+                                    ? 'bg-[#c2536b] font-bold text-white'
+                                    : 'text-[#7a6972] hover:bg-[#fce4eb] hover:text-[#c2536b]'
                                 }`}
                               >
                                 <span className="truncate">{sub.name}</span>
-                                {isSubActive && <Check className="w-3.5 h-3.5" />}
+                                {isSubActive && <Check className="h-3.5 w-3.5" />}
                               </button>
                             );
                           })}
@@ -244,22 +238,22 @@ function ProductsListContent() {
             </div>
 
             {/* Price Filter */}
-            <div className="space-y-3 pt-2 border-t border-slate-100">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Khoảng Giá (VNĐ)</label>
+            <div className="space-y-3 border-t border-[#f7eef1] pt-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#7a6972]">Khoảng Giá (VNĐ)</label>
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="number"
                   placeholder="Từ"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-emerald-500"
+                  className="w-full rounded-xl border border-[#f0d4dc] bg-[#fff7f9] px-3 py-2 text-xs focus:border-[#c2536b] focus:outline-none"
                 />
                 <input
                   type="number"
                   placeholder="Đến"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-emerald-500"
+                  className="w-full rounded-xl border border-[#f0d4dc] bg-[#fff7f9] px-3 py-2 text-xs focus:border-[#c2536b] focus:outline-none"
                 />
               </div>
             </div>
@@ -268,18 +262,17 @@ function ProductsListContent() {
 
         {/* Products Grid */}
         <main className="lg:col-span-3 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-4 px-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
-            <p className="text-sm font-semibold text-slate-700">
-              Hiển thị <span className="font-bold text-emerald-700">{products.length}</span> sản phẩm phù hợp
+          <div className="flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#f0d4dc] bg-white p-4 px-6 shadow-sm sm:flex-row">
+            <p className="text-sm font-semibold text-[#3a2f34]">
+              Hiển thị <span className="font-bold text-[#c2536b]">{products.length}</span> sản phẩm phù hợp
             </p>
-
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-              <ArrowUpDown className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#3a2f34]">
+              <ArrowUpDown className="h-4 w-4 text-[#c2536b]" />
               <span>Sắp xếp:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-slate-100 border border-slate-200 rounded-xl px-3 py-1.5 text-sm font-semibold focus:outline-none focus:border-emerald-500"
+                className="rounded-xl border border-[#f0d4dc] bg-[#fff7f9] px-3 py-1.5 text-sm font-semibold focus:border-[#c2536b] focus:outline-none"
               >
                 <option value="newest">Hàng mới về</option>
                 <option value="popular">Bán chạy nhất</option>
@@ -290,75 +283,74 @@ function ProductsListContent() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white rounded-2xl border border-slate-200/50 p-4 space-y-4 animate-pulse">
-                  <div className="aspect-[4/5] bg-slate-100 rounded-2xl"></div>
-                  <div className="h-4 bg-slate-100 rounded w-2/3"></div>
+                <div key={i} className="animate-pulse space-y-4 rounded-2xl border border-[#f0d4dc] bg-white p-4">
+                  <div className="aspect-[4/5] rounded-2xl bg-[#fdf2f5]" />
+                  <div className="h-4 w-2/3 rounded bg-[#fdf2f5]" />
                 </div>
               ))}
             </div>
           ) : products.length === 0 ? (
-            <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
-                <Filter className="w-8 h-8" />
+            <div className="space-y-4 rounded-3xl border border-[#f0d4dc] bg-white p-12 text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#fce4eb] text-[#c2536b]">
+                <Filter className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900">Không tìm thấy sản phẩm phù hợp</h3>
-              <p className="text-sm text-slate-500 max-w-md mx-auto">
+              <p className="text-xl font-bold text-[#1c1a1e]">Không tìm thấy sản phẩm phù hợp</p>
+              <p className="mx-auto max-w-md text-sm text-[#7a6972]">
                 Hãy thử chọn danh mục khác hoặc xóa bộ lọc để xem thêm kết quả.
               </p>
               <button
                 onClick={handleResetFilters}
-                className="px-6 py-2.5 bg-emerald-600 text-white rounded-full text-sm font-bold shadow-md hover:bg-emerald-700 transition-all"
+                className="rounded-full bg-[#c2536b] px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:bg-[#8f2d45]"
               >
                 Xem tất cả sản phẩm
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => {
-                const primaryImg = product.product_images?.find(img => img.is_primary)?.image_url 
-                  || product.product_images?.[0]?.image_url 
-                  || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800';
+                const primaryImg =
+                  product.product_images?.find((img) => img.is_primary)?.image_url ||
+                  product.product_images?.[0]?.image_url ||
+                  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600';
 
                 const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.base_price);
-                const sizes = product.product_variants?.map(v => v.attributes?.size).filter(Boolean) || [];
+                const sizes = product.product_variants?.map((v) => v.attributes?.size).filter(Boolean) || [];
 
                 return (
-                  <div key={product.id} className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
-                    <Link href={`/products/${product.slug}`} className="cursor-pointer block relative aspect-[4/5] bg-slate-100 overflow-hidden">
+                  <div key={product.id} className="group flex flex-col overflow-hidden rounded-2xl border border-[#f0d4dc] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <Link href={`/products/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-[#fdf6f8]">
                       <img
                         src={primaryImg}
                         alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                       {product.categories && (
-                        <span className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-md text-xs font-bold text-slate-800 shadow-sm border border-slate-200">
+                        <span className="absolute left-3 top-3 rounded-lg border border-[#f0d4dc] bg-white/95 px-2.5 py-1 text-xs font-semibold text-[#3a2f34] shadow-sm backdrop-blur-sm">
                           {product.categories.name}
                         </span>
                       )}
                     </Link>
 
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div className="flex flex-1 flex-col justify-between space-y-3 p-4">
                       <div>
-                        <div className="flex items-center justify-between text-xs font-bold text-amber-500 mb-1.5">
+                        <div className="mb-1.5 flex items-center justify-between text-xs font-bold text-amber-500">
                           <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                            <span>{product.avg_rating}</span>
+                            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                            {product.avg_rating}
                           </div>
-                          <span className="text-slate-400 font-normal">Đã bán {product.total_sold}</span>
+                          <span className="font-normal text-[#b8abb2]">Đã bán {product.total_sold}</span>
                         </div>
-
-                        <Link href={`/products/${product.slug}`} className="font-bold text-slate-900 text-base line-clamp-2 hover:text-emerald-600 transition-colors leading-snug">
+                        <Link href={`/products/${product.slug}`} className="line-clamp-2 text-sm font-bold leading-snug text-[#1c1a1e] transition-colors hover:text-[#c2536b]">
                           {product.name}
                         </Link>
-
                         {sizes.length > 0 && (
-                          <div className="flex items-center gap-1 mt-2.5 flex-wrap">
-                            <span className="text-[11px] font-semibold text-slate-400">Size:</span>
+                          <div className="mt-2 flex flex-wrap items-center gap-1">
+                            <span className="text-[11px] font-semibold text-[#b8abb2]">Size:</span>
                             {sizes.slice(0, 5).map((sz, idx) => (
-                              <span key={idx} className="text-[10px] bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-bold">
+                              <span key={idx} className="rounded bg-[#fdf2f5] px-1.5 py-0.5 text-[10px] font-bold text-[#7a6972]">
                                 {sz}
                               </span>
                             ))}
@@ -366,10 +358,10 @@ function ProductsListContent() {
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                        <span className="text-lg font-black text-emerald-700">{formattedPrice}</span>
-                        <Link href={`/products/${product.slug}`} className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors shadow-sm">
-                          <ShoppingBag className="w-5 h-5" />
+                      <div className="flex items-center justify-between border-t border-[#f7eef1] pt-3">
+                        <span className="text-base font-black text-[#c2536b] sm:text-lg">{formattedPrice}</span>
+                        <Link href={`/products/${product.slug}`} className="rounded-xl bg-[#fce4eb] p-2.5 text-[#c2536b] shadow-sm transition-colors hover:bg-[#c2536b] hover:text-white">
+                          <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5" />
                         </Link>
                       </div>
                     </div>
@@ -386,7 +378,7 @@ function ProductsListContent() {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div className="p-12 text-center text-slate-500 font-semibold">Đang tải danh sách sản phẩm...</div>}>
+    <Suspense fallback={<div className="p-12 text-center text-[#7a6972] font-semibold">Đang tải danh sách sản phẩm...</div>}>
       <ProductsListContent />
     </Suspense>
   );

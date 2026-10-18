@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className="antialiased selection:bg-emerald-500 selection:text-white">
+      <body className="antialiased selection:bg-[#c2536b] selection:text-white">
         <AuthProvider>
           <CartProvider>
             <Navbar />

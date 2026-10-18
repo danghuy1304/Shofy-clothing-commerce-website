@@ -1,60 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --color-primary: #059669;
-  --color-primary-hover: #047857;
+  --font-sans:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+
+  /* Feminine brand palette */
+  --rose:         #c2536b;
+  --rose-dark:    #8f2d45;
+  --rose-pale:    #fce4eb;
+  --rose-border:  #f0d4dc;
+  --plum:         #1e0a16;
+  --plum-mid:     #4a1030;
+  --plum-bright:  #7d2b52;
+
+  /* Surfaces */
+  --surface:      #fffdf8;
+  --surface-alt:  #fdf6f8;
+  --surface-card: #ffffff;
+
+  /* Text */
+  --text:         #1c1a1e;
+  --text-muted:   #7a6972;
+  --text-faint:   #b8abb2;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
-  font-family: var(--font-primary);
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  /* Không set color — để Tailwind utilities & body color kế thừa */
 }
 
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+/* ── Navbar ───────────────────────────────────────── */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(255, 253, 248, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--rose-border);
+  box-shadow: 0 4px 20px rgba(142, 45, 69, 0.06);
 }
 
-.green-gradient-bg {
-  background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%);
+/* ── Hero ─────────────────────────────────────────── */
+.hero-fashion-bg {
+  background: linear-gradient(135deg, #1e0a16 0%, #4a1030 48%, #7d2b52 100%);
 }
 
-.green-glass-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.08);
+/* ── Cards & surfaces ─────────────────────────────── */
+.fashion-card {
+  background: var(--surface-card);
+  border: 1px solid var(--rose-border);
+  box-shadow: 0 8px 28px rgba(142, 45, 69, 0.07);
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
-}
+/* ── Custom scrollbar ─────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #f8f1f4; border-radius: 9999px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #dba8b6; border-radius: 9999px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--rose); }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 9999px;
-}
+/* ── Deprecated helpers kept for compat ──────────── */
+.green-gradient-bg  { background: linear-gradient(135deg, #1e0a16 0%, #4a1030 48%, #7d2b52 100%); }
+.green-glass-card   { background: var(--surface-card); border: 1px solid var(--rose-border); }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #10b981;
-  border-radius: 9999px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #059669;
-}
+@media (max-width: 640px) { body { font-size: 15px; } }

@@ -82,141 +82,147 @@ export default function HomePage() {
   const currentProducts = activeTab === 'trending' ? trendingProducts : newestProducts;
 
   return (
-    <div className="space-y-24 pb-20">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden green-gradient-bg text-white py-20 lg:py-28 px-4 sm:px-6 lg:px-8 shadow-xl">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-emerald-200 text-sm font-semibold backdrop-blur-md">
-              <Sparkles className="w-4 h-4 text-emerald-300 fill-emerald-300" />
-              <span>Bộ Sưu Tập 7 Nhóm Danh Mục Premium</span>
+    <div className="pb-24 pt-0">
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="hero-fashion-bg relative overflow-hidden px-4 py-14 text-white sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        {/* subtle texture overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_-10%,_rgba(200,80,120,0.25),_transparent)]" />
+
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          {/* Text side */}
+          <div className="space-y-6 text-center lg:col-span-7 lg:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-pink-100 backdrop-blur-sm sm:text-sm">
+              <Sparkles className="h-3.5 w-3.5 fill-pink-200 text-pink-200" />
+              Bộ sưu tập thời trang nữ Premium
             </div>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none">
-              Phong Cách Độc Bản <br />
-              <span className="text-emerald-200 underline decoration-emerald-400 decoration-wavy underline-offset-8">
+
+            <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+              Phong Cách Độc Bản
+              <span className="mt-2 block font-black italic text-[#f5c4d2] underline decoration-[#f093ae] decoration-wavy underline-offset-8">
                 Shofy Luxury Edition
               </span>
             </h1>
 
-            <p className="text-emerald-50 text-base sm:text-lg max-w-2xl font-medium leading-relaxed">
-              Khám phá hơn 448 thiết kế thời trang hiện đại được phân loại theo 7 Bucket chính (Áo, Quần, Giày, Mũ, Găng, Túi xách, Phụ kiện) với đầy đủ thư mục con.
+            <p className="mx-auto max-w-lg text-sm font-normal leading-relaxed text-pink-100 sm:text-base lg:mx-0">
+              Khám phá hơn 448 thiết kế thời trang hiện đại được phân loại theo 7 Bucket chính — Áo, Quần, Giày, Mũ, Găng, Túi xách, Phụ kiện.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row lg:justify-start">
               <Link
                 href="/products"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-base shadow-xl transition-all flex items-center justify-center gap-2 group"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#8f2d45] shadow-lg transition-all hover:bg-[#fff7f9] sm:w-auto sm:text-base"
               >
-                <span>Khám phá Tất cả Sản phẩm</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Khám phá Tất cả Sản phẩm
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/sale"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto sm:text-base"
+              >
+                Xem Khuyến Mãi
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-md aspect-[4/5] rounded-3xl bg-emerald-800/30 border border-white/20 p-4 shadow-2xl backdrop-blur-sm relative group overflow-hidden">
-              <img 
-                src="https://nnywafybvxthtylhntib.supabase.co/storage/v1/object/public/Ao/Ao_khoac/AoKhoac_1.jpg" 
-                alt="Shofy Luxury Hero"
-                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
+          {/* Image side */}
+          <div className="flex justify-center lg:col-span-5">
+            <div className="relative w-full max-w-sm overflow-hidden rounded-3xl border border-white/15 shadow-[0_32px_80px_rgba(0,0,0,0.45)]">
+              <img
+                src="https://nnywafybvxthtylhntib.supabase.co/storage/v1/object/public/Ao/Ao_khoac/AoKhoac_1.jpg"
+                alt="Shofy Luxury Fashion"
+                className="aspect-[3/4] w-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src =
+                    'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80';
+                }}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1e0a16]/60 via-transparent to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Feature Highlights Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm flex items-start gap-4">
-            <div className="p-3.5 rounded-xl bg-emerald-50 text-emerald-600">
-              <Truck className="w-7 h-7" />
-            </div>
+      {/* ── Feature Highlights ─────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+          <div className="fashion-card flex items-start gap-4 rounded-2xl p-5">
+            <div className="shrink-0 rounded-xl bg-[#fce4eb] p-3 text-[#c2536b]"><Truck className="h-6 w-6" /></div>
             <div>
-              <h4 className="font-bold text-slate-900 text-base">Giao Hàng Toàn Quốc</h4>
-              <p className="text-xs text-slate-500 mt-1">Đồng giá vận chuyển, hỗ trợ đồng kiểm</p>
+              <h4 className="text-sm font-bold text-[#1c1a1e] sm:text-base">Giao Hàng Toàn Quốc</h4>
+              <p className="mt-1 text-xs leading-relaxed text-[#7a6972]">Đồng giá vận chuyển, hỗ trợ đồng kiểm</p>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm flex items-start gap-4">
-            <div className="p-3.5 rounded-xl bg-teal-50 text-teal-600">
-              <CreditCard className="w-7 h-7" />
-            </div>
+          <div className="fashion-card flex items-start gap-4 rounded-2xl p-5">
+            <div className="shrink-0 rounded-xl bg-[#f5ebfe] p-3 text-[#8b5cf6]"><CreditCard className="h-6 w-6" /></div>
             <div>
-              <h4 className="font-bold text-slate-900 text-base">Thanh Toán Linh Hoạt</h4>
-              <p className="text-xs text-slate-500 mt-1">Hỗ trợ COD & Cổng VNPay Sandbox</p>
+              <h4 className="text-sm font-bold text-[#1c1a1e] sm:text-base">Thanh Toán Linh Hoạt</h4>
+              <p className="mt-1 text-xs leading-relaxed text-[#7a6972]">Hỗ trợ COD & Cổng VNPay Sandbox</p>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm flex items-start gap-4">
-            <div className="p-3.5 rounded-xl bg-emerald-100 text-emerald-800">
-              <Sparkles className="w-7 h-7" />
-            </div>
+          <div className="fashion-card flex items-start gap-4 rounded-2xl p-5">
+            <div className="shrink-0 rounded-xl bg-[#fef3c7] p-3 text-[#d97706]"><Sparkles className="h-6 w-6" /></div>
             <div>
-              <h4 className="font-bold text-slate-900 text-base">Tư Vấn Outfit AI</h4>
-              <p className="text-xs text-slate-500 mt-1">Trợ lý phối đồ thông minh AI Stylist</p>
+              <h4 className="text-sm font-bold text-[#1c1a1e] sm:text-base">Tư Vấn Outfit AI</h4>
+              <p className="mt-1 text-xs leading-relaxed text-[#7a6972]">Trợ lý phối đồ thông minh AI Stylist</p>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm flex items-start gap-4">
-            <div className="p-3.5 rounded-xl bg-amber-50 text-amber-600">
-              <ShieldCheck className="w-7 h-7" />
-            </div>
+          <div className="fashion-card flex items-start gap-4 rounded-2xl p-5">
+            <div className="shrink-0 rounded-xl bg-[#d1fae5] p-3 text-[#059669]"><ShieldCheck className="h-6 w-6" /></div>
             <div>
-              <h4 className="font-bold text-slate-900 text-base">Đổi Trả Dễ Dàng</h4>
-              <p className="text-xs text-slate-500 mt-1">Đổi trả sản phẩm linh hoạt trong 7 ngày</p>
+              <h4 className="text-sm font-bold text-[#1c1a1e] sm:text-base">Đổi Trả Dễ Dàng</h4>
+              <p className="mt-1 text-xs leading-relaxed text-[#7a6972]">Đổi trả sản phẩm linh hoạt trong 7 ngày</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7 Main Buckets Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* ── Category Buckets ───────────────────────────── */}
+      <section className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600">Cấu Trúc Storage & Data</span>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">7 Nhóm Danh Mục Chính (Buckets)</h2>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#c2536b]">Danh Mục Thời Trang</span>
+            <h2 className="mt-1 text-2xl font-black text-[#1c1a1e] tracking-tight sm:text-3xl">7 Nhóm Danh Mục Chính</h2>
           </div>
-          <Link href="/categories" className="text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">
-            <span>Chi tiết tất cả thư mục</span>
-            <ChevronRight className="w-4 h-4" />
+          <Link href="/categories" className="flex items-center gap-1 text-sm font-semibold text-[#c2536b] hover:text-[#8f2d45] transition-colors">
+            <span className="hidden sm:inline">Xem tất cả</span>
+            <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {parentBuckets.map((bucket) => (
             <div
               key={bucket.id}
-              className="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-[#f0d4dc] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <Link href={`/products?category=${bucket.slug}`} className="block aspect-[4/3] bg-slate-100 overflow-hidden relative">
+              <Link href={`/products?category=${bucket.slug}`} className="relative block aspect-[4/3] overflow-hidden bg-[#fdf6f8]">
                 <img
-                  src={bucket.image_url || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800'}
+                  src={bucket.image_url || 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800'}
                   alt={bucket.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex flex-col justify-end p-5 text-white">
-                  <h3 className="font-black text-2xl tracking-tight">{bucket.name}</h3>
-                  <p className="text-xs text-emerald-300 font-semibold mt-0.5">
-                    {bucket.children?.length || 0} Thư mục Folder bên trong
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#1e0a16]/80 via-[#1e0a16]/20 to-transparent p-4 text-white">
+                  <h3 className="text-xl font-black tracking-tight">{bucket.name}</h3>
+                  <p className="mt-0.5 text-xs font-semibold text-[#f5c4d2]">
+                    {bucket.children?.length || 0} danh mục con
                   </p>
                 </div>
               </Link>
-
-              {/* Subfolder Chips */}
-              <div className="p-4 space-y-3 bg-white">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  <Folder className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Folders:</span>
+              <div className="space-y-2.5 p-4">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#c2aab2]">
+                  <Folder className="h-3.5 w-3.5 text-[#c2536b]" />
+                  <span>Danh mục:</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {bucket.children?.map((sub) => (
                     <Link
                       key={sub.id}
                       href={`/products?category=${sub.slug}`}
-                      className="text-xs bg-slate-100 hover:bg-emerald-600 hover:text-white px-2.5 py-1 rounded-lg font-semibold text-slate-700 transition-colors"
+                      className="rounded-lg bg-[#fdf2f5] px-2.5 py-1 text-xs font-semibold text-[#7a6972] transition-colors hover:bg-[#c2536b] hover:text-white"
                     >
                       {sub.name}
                     </Link>
@@ -228,31 +234,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600">Sản Phẩm Nổi Bật</span>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Khám Phá Trang Phục</h2>
+      {/* ── Featured Products ──────────────────────────── */}
+      <section className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 border-b border-[#f0d4dc] pb-6 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-1 text-center md:text-left">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#c2536b]">Sản Phẩm Nổi Bật</span>
+            <h2 className="text-2xl font-black text-[#1c1a1e] tracking-tight sm:text-3xl">Khám Phá Trang Phục</h2>
           </div>
-
-          <div className="flex bg-slate-100 p-1.5 rounded-xl self-center md:self-auto border border-slate-200">
+          <div className="flex self-center rounded-xl border border-[#f0d4dc] bg-[#fff7f9] p-1 md:self-auto">
             <button
               onClick={() => setActiveTab('trending')}
-              className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
+              className={`rounded-lg px-5 py-2 text-sm font-bold transition-all ${
                 activeTab === 'trending'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-[#c2536b] text-white shadow-sm'
+                  : 'text-[#7a6972] hover:text-[#1c1a1e]'
               }`}
             >
               🔥 Bán Chạy Nhất
             </button>
             <button
               onClick={() => setActiveTab('newest')}
-              className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
+              className={`rounded-lg px-5 py-2 text-sm font-bold transition-all ${
                 activeTab === 'newest'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-[#c2536b] text-white shadow-sm'
+                  : 'text-[#7a6972] hover:text-[#1c1a1e]'
               }`}
             >
               ✨ Hàng Mới Về
@@ -261,63 +266,76 @@ export default function HomePage() {
         </div>
 
         {errorMsg && (
-          <div className="flex items-center gap-3 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-semibold max-w-3xl mx-auto">
-            <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
-            <div>{errorMsg}</div>
+          <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-800">
+            <AlertCircle className="h-5 w-5 shrink-0 text-rose-500" />
+            {errorMsg}
           </div>
         )}
 
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="bg-white rounded-2xl border border-slate-200/50 p-4 space-y-4 animate-pulse">
-                <div className="aspect-[4/5] bg-slate-100 rounded-2xl"></div>
-                <div className="h-4 bg-slate-100 rounded w-2/3"></div>
+              <div key={i} className="animate-pulse space-y-4 rounded-2xl border border-[#f0d4dc] bg-white p-4">
+                <div className="aspect-[4/5] rounded-xl bg-[#fdf2f5]" />
+                <div className="h-4 w-2/3 rounded bg-[#fdf2f5]" />
+                <div className="h-3 w-1/3 rounded bg-[#fdf2f5]" />
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {currentProducts.map((product) => {
-              const primaryImg = product.product_images?.find(img => img.is_primary)?.image_url 
-                || product.product_images?.[0]?.image_url 
-                || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800';
+              const primaryImg =
+                product.product_images?.find((img) => img.is_primary)?.image_url ||
+                product.product_images?.[0]?.image_url ||
+                'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600';
 
-              const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.base_price);
+              const formattedPrice = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+              }).format(product.base_price);
 
               return (
-                <div key={product.id} className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
-                  <Link href={`/products/${product.slug}`} className="cursor-pointer block relative aspect-[4/5] bg-slate-100 overflow-hidden">
+                <div
+                  key={product.id}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-[#f0d4dc] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <Link href={`/products/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-[#fdf6f8]">
                     <img
                       src={primaryImg}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
                     {product.categories && (
-                      <span className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-md text-xs font-bold text-slate-800 shadow-sm border border-slate-200">
+                      <span className="absolute left-3 top-3 rounded-lg border border-[#f0d4dc] bg-white/95 px-2.5 py-1 text-xs font-semibold text-[#3a2f34] shadow-sm backdrop-blur-sm">
                         {product.categories.name}
                       </span>
                     )}
                   </Link>
 
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="flex flex-1 flex-col justify-between space-y-3 p-4">
                     <div>
-                      <div className="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-1.5">
-                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                        <span>{product.avg_rating}</span>
-                        <span className="text-slate-400 font-normal">({product.total_sold} đã bán)</span>
+                      <div className="mb-1.5 flex items-center gap-1.5 text-xs font-bold text-amber-500">
+                        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                        {product.avg_rating}
+                        <span className="font-normal text-[#b8abb2]">({product.total_sold} đã bán)</span>
                       </div>
-
-                      <Link href={`/products/${product.slug}`} className="font-bold text-slate-900 text-base line-clamp-2 hover:text-emerald-600 transition-colors leading-snug">
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="line-clamp-2 text-sm font-bold leading-snug text-[#1c1a1e] transition-colors hover:text-[#c2536b] sm:text-base"
+                      >
                         {product.name}
                       </Link>
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                      <span className="text-lg font-black text-emerald-700">{formattedPrice}</span>
-                      <Link href={`/products/${product.slug}`} className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors shadow-sm">
-                        <ShoppingBag className="w-5 h-5" />
+                    <div className="flex items-center justify-between border-t border-[#f7eef1] pt-3">
+                      <span className="text-base font-black text-[#c2536b] sm:text-lg">{formattedPrice}</span>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="rounded-xl bg-[#fce4eb] p-2.5 text-[#c2536b] shadow-sm transition-colors hover:bg-[#c2536b] hover:text-white"
+                      >
+                        <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5" />
                       </Link>
                     </div>
                   </div>
@@ -327,13 +345,13 @@ export default function HomePage() {
           </div>
         )}
 
-        <div className="text-center pt-6">
+        <div className="pt-4 text-center">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-slate-900 text-white font-bold text-sm hover:bg-emerald-600 hover:shadow-xl transition-all shadow-md"
+            className="inline-flex items-center gap-2 rounded-full bg-[#c2536b] px-8 py-4 text-sm font-bold text-white shadow-md transition-all hover:bg-[#8f2d45] hover:shadow-lg sm:text-base"
           >
-            <span>Xem Tất Cả 448 Sản Phẩm</span>
-            <ArrowRight className="w-5 h-5" />
+            Xem Tất Cả 448 Sản Phẩm
+            <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
       </section>
